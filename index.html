@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de compras organizada</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Compra ordenada</p>
+          <h1>Lista inteligente para organizar lo que falta comprar</h1>
+          <p class="hero-copy">
+            Escribe productos como leche, tomate o detergente. La app los agrupa sola por
+            categoria y puedes marcar, tachar, sumar cantidades o limpiar lo comprado.
+          </p>
+        </div>
+        <div class="summary-panel" aria-label="Resumen de la compra">
+          <div>
+            <span class="summary-label">Pendientes</span>
+            <strong id="pendingCount">0</strong>
+          </div>
+          <div>
+            <span class="summary-label">Comprados</span>
+            <strong id="doneCount">0</strong>
+          </div>
+          <div>
+            <span class="summary-label">Categorias</span>
+            <strong id="categoryCount">0</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Agregar producto">
+        <form id="itemForm" class="item-form">
+          <label class="input-wrap">
+            <span>Producto</span>
+            <input
+              id="itemInput"
+              type="text"
+              autocomplete="off"
+              placeholder="Ej: leche, manzana, arroz..."
+              required
+            />
+          </label>
+          <label class="qty-wrap">
+            <span>Cant.</span>
+            <input id="qtyInput" type="number" min="1" max="99" value="1" />
+          </label>
+          <button class="primary-button" type="submit">Agregar</button>
+        </form>
+
+        <div class="toolbar" aria-label="Opciones de la lista">
+          <div class="segmented" role="group" aria-label="Filtro">
+            <button class="filter-button active" type="button" data-filter="all">Todo</button>
+            <button class="filter-button" type="button" data-filter="pending">Falta</button>
+            <button class="filter-button" type="button" data-filter="done">Comprado</button>
+          </div>
+          <button id="clearDone" class="ghost-button" type="button">Quitar comprados</button>
+        </div>
+      </section>
+
+      <section id="categoryList" class="category-list" aria-live="polite"></section>
+
+      <template id="emptyTemplate">
+        <div class="empty-state">
+          <h2>Tu lista esta lista para empezar</h2>
+          <p>Agrega productos y se ordenaran automaticamente por lacteos, verduras, aseo y mas.</p>
+        </div>
+      </template>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
